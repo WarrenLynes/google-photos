@@ -1,0 +1,23 @@
+
+<div class="container">
+  <mat-card class="col-" *ngFor="let item of items">
+
+    <mat-card-actions>
+      <div class="spacer"></div>
+      <button mat-icon-button color="primary" [matMenuTriggerFor]="appMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <mat-menu #appMenu="matMenu">
+        <button mat-menu-item (click)="selectItem.emit(item.id)"> View </button>
+        <button mat-menu-item (click)="deleteItem.emit(item.id)"> Delete </button>
+      </mat-menu>
+    </mat-card-actions>
+
+    <mat-card-content [ngStyle]="{background: 'url(' + item.baseUrl + ')!important;'}">
+      <div class="photo-frame" [ngStyle]="{background: 'url(' + item.baseUrl + ')'}">
+<!--        <img [src]="item.baseUrl" alt="">-->
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

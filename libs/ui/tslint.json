@@ -1,0 +1,7 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [true, "attribute", "googleImages", "camelCase"],
+    "component-selector": [true, "element", "google-images", "kebab-case"]
+  }
+}

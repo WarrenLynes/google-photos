@@ -1,0 +1,16 @@
+.container {
+  height: 100%
+}
+.photo-frame {
+  overflow: hidden;
+  background-repeat: no-repeat!important;
+  background-size: contain!important;
+  background-position: center!important;
+}
+
+.back-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #212121;
+}

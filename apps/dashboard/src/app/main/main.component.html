@@ -1,0 +1,12 @@
+
+<div class="container">
+  <div class="col- full-width">
+    <google-images-list
+          [items]="photos$ | async"
+          [item]="photo$ | async"
+          titleKey="id"
+          subtitleKey="id"
+          (selectItem)="onSelectPhoto($event)"
+    ></google-images-list>
+  </div>
+</div>

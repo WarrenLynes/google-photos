@@ -1,0 +1,4 @@
+<div class="container">
+  <button class="back-btn" mat-button routerLink="/photos">back</button>
+  <div *ngIf="item" class="col- full-width photo-frame" [ngStyle]="{background: 'url(' + item.baseUrl + ')'}"></div>
+</div>

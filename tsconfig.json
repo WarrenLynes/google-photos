@@ -15,7 +15,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@google-images/material": ["libs/material/src/index.ts"],
+      "@google-images/ui": ["libs/ui/src/index.ts"],
+      "@google-images/core-data": ["libs/core-data/src/index.ts"],
+      "@google-images/core-state": ["libs/core-state/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
