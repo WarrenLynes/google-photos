@@ -34,8 +34,9 @@ export class MainComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('photos/' + photoId);
   }
 
-  onCreateEvent(date) {
-    console.log(date);
+  onCreatePhoto(photoFile) {
+    console.log(photoFile);
+    this.photosFacade.createPhoto(photoFile);
   }
 
   savePhoto(photo: Photo) {

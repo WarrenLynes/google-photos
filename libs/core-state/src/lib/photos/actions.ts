@@ -13,7 +13,7 @@ export const photosLoaded = createAction(
 );
 export const createPhoto = createAction(
   '[PHOTOS][CREATE]',
-  props<{ photo: any }>()
+  props<{ description: any, photo: File, blobBuffer: ArrayBuffer }>()
 );
 export const photoCreated = createAction(
   '[PHOTOS][CREATED]',

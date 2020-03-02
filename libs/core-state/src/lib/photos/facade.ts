@@ -28,8 +28,10 @@ export class PhotosFacade {
     this.dispatch(photosActions.loadPhotos());
   }
 
-  createPhoto(photo: Photo) {
-    this.dispatch(photosActions.createPhoto({ photo }));
+  async createPhoto(photo: any) {
+    const description = photo.description;
+    const blobBuffer = await photo.photo.arrayBuffer();
+    this.dispatch(photosActions.createPhoto({ ...photo, blobBuffer }));
   }
 
   updatePhoto(photo: Photo) {

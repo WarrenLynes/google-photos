@@ -26,7 +26,7 @@ import { RouterModule } from '@angular/router';
     LoadingComponent,
     ListComponent,
     PhotoFormComponent,
-
+    DetailComponent
   ]
 })
 export class UiModule {}

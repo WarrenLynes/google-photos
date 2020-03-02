@@ -1,6 +1,14 @@
 
 <div class="container">
   <div class="col- full-width">
+    <google-images-photo-form
+      [selectedPhoto]="photo$"
+      (savePhoto)="onCreatePhoto($event)"
+    ></google-images-photo-form>
+  </div>
+  <div class="col- full-width">
+
+
     <google-images-list
           [items]="photos$ | async"
           [item]="photo$ | async"

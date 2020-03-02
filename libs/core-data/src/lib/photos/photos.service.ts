@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { delay, map, tap } from 'rxjs/operators';
+import { delay, flatMap, map, switchMap, tap } from 'rxjs/operators';
 import { Photo, emptyPhoto } from './photo';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class PhotosService {
@@ -19,10 +19,28 @@ export class PhotosService {
     }).pipe( delay(1000), map((x: any) => x.mediaItems) )
   }
 
-  create(model) {
-    return this.httpClient.post(this.baseUrl, model).pipe(
-      map((x: any) => ({...x, id: x.resourceName}))
-    );
+  create(description, photoFile, blobBuffer) {
+    return this.httpClient.post(this.baseUrl + '/uploads', {
+      "media-binary-data": blobBuffer
+    }, {
+      responseType: 'text',
+      headers: new HttpHeaders({
+        "Content-type": "application/octet-stream",
+        "Accept": "application/text",
+        "X-Goog-Upload-Content-Type": photoFile.type,
+        "X-Goog-Upload-Protocol": "raw"
+      })
+    }).pipe(flatMap((x) => this.httpClient.post(this.baseUrl + ':batchCreate', {
+      newMediaItems: [
+        {
+          description: photoFile.description,
+          simpleMediaItem: {
+            uploadToken: x,
+            fileName: photoFile.name
+          }
+        }
+      ]
+    })));
   }
 
   getUrlForId(id) {

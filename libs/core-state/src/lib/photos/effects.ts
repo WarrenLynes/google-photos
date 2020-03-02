@@ -38,7 +38,7 @@ export class PhotosEffects {
       ) => {
         this.appFacade.addLoad('[PHOTOS][CREATE]');
 
-        return this.photosService.create(action.photo).pipe(
+        return this.photosService.create(action.description, action.photo, action.blobBuffer).pipe(
           map((photo: Photo) => photosActions.photoCreated({ photo })),
           tap(() => this.notifyService.openSnackBar('Successfully Added a Photo')),
           tap(() => this.appFacade.removeLoad('[PHOTOS][CREATE]'))
